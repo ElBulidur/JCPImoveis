@@ -1,0 +1,30 @@
+.mobile{
+  color: red;
+}
+.tablet{
+  color: blueviolet;
+  font-size: large;
+}
+.desktop{
+  color: red;
+}
+
+table {
+  width: 100%;
+}
+
+.table-container {
+  /*max-height: 500px;*/
+  overflow: auto;
+}
+
+.mat-column-action {
+  width: 80px;
+}
+
+
+
+.example-card {
+  padding: 3px;
+  margin-bottom: 8px;
+}

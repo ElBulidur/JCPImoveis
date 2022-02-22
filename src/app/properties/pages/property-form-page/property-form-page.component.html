@@ -1,0 +1,206 @@
+<div class="container" style="width: 85vw;min-height:100%;">
+  <h1 class="mat-display-3 page-title">
+    {{ pageTitle }}
+    <mat-divider></mat-divider>
+  </h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="form-container">
+
+
+  <mat-grid-list cols="12" rowHeight="48px" style="width:100%">
+
+    <mat-grid-tile rowspan="2" colspan="12">
+      <fieldset style="width:100%;">
+        <legend style="color:brown">INFORMAÇÕES GERAIS</legend>
+        <div fxLayout="row" >
+          <div fxLayout="row" fxLayoutAlign="start center" style="width: 300px;  height:50px; background-color:rgba(97,97,97,.05); padding:5px; margin-bottom:2px; border-bottom:1px solid grey">
+            <mat-radio-group [formControl]="modality">
+              <label style="margin-right: 5px; font-weight:bold;">OBJETIVO: </label>
+              <span>
+                <mat-radio-button value="venda">Vender</mat-radio-button>
+                <mat-radio-button value="aluguel"> Alugar</mat-radio-button>
+              </span>
+            </mat-radio-group>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" style="width:300px; height:50px; margin-left:10px; background-color:rgba(97,97,97,.05); padding:5px; border-bottom:1px solid grey">
+            <mat-label style="margin-right: 5px; font-weight:bold;">ANÚNCIO: </mat-label>
+            <input type="date" matInput [formControl]="announcementAt" />
+          </div>
+        </div>
+      </fieldset>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="4" colspan="12" style="border-radius:3px 0px 0px 5px;">
+      <fieldset style="width:100%; padding:5px 10px">
+        <legend style="color:brown">INFORMAÇÕES DA PROPRIEDADE</legend>
+
+        <div fxLayout="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo da propriedade: </mat-label>
+              <mat-select  type="text" matInput [formControl]="type" >
+                <mat-option value="Apartamento">Apartamento</mat-option>
+                <mat-option value="Casa">Casa</mat-option>
+                <mat-option value="Galpão">Galpão</mat-option>
+                <mat-option value="Ponto Comercial">Comercial</mat-option>
+                <mat-option value="KitNet">KitNet</mat-option>
+                <mat-option value="Barracão">Barracão</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <span fxLayout="row" fxLayoutAlign="start center" style="width: 220px; margin-left:5px; height:52px; background-color:rgba(97,97,97,.05); padding:5px; margin-bottom:2px; border-bottom:1px solid grey">
+          <mat-slide-toggle color="primary" [formControl]="furnished">
+            {{ furnished.value ? 'Mobiliado': 'Não mobiliado' }}
+          </mat-slide-toggle>
+        </span>
+
+      <mat-form-field appearance="fill" style="margin-left: 5px;">
+        <mat-label >Valor</mat-label>
+        <input matInput type="number" class="example-right-align" [formControl]="value" >
+        <span matPrefix>R$&nbsp;</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="margin-left: 5px;">
+        <mat-label >Condomínio </mat-label>
+        <input matInput type="number" class="example-right-align" [formControl]="condominium" >
+        <span matPrefix>R$&nbsp;</span>
+        <mat-hint>Se houver!</mat-hint>
+      </mat-form-field>
+      </div>
+
+      <div style="display:inline-block; width:80px; background-color:rgba(97,97,97,.05); text-align:center; padding:1px; border-radius:5px; margin:0px 0px 5px 5px; border-bottom:1px solid grey">
+        <mat-label style="font-size: 80%; color:grey;">Area<mat-icon style="font-size: 100%;">pin_drop</mat-icon></mat-label>
+        <span fxLayout="row"  fxLayoutAlign="start center">
+          <input type="number" matInput [formControl]="area"/>
+          <span matSuffix style="color:grey">m&#x00B2;</span>
+        </span>
+      </div>
+      <div style="display:inline-block; width:80px; background-color:rgba(97,97,97,.05); text-align:center; border-radius:5px; margin:0px 0px 5px 5px; border-bottom:1px solid grey">
+        <mat-label style="font-size: 80%; color:grey;">Quartos <mat-icon style="font-size: 100%;">king_bed</mat-icon></mat-label>
+        <mat-select  type= matInput [formControl]="bedRooms" >
+          <mat-option value=1>1</mat-option>
+          <mat-option value=2>2</mat-option>
+          <mat-option value=3>3</mat-option>
+          <mat-option value=4>4</mat-option>
+          <mat-option value=5>5</mat-option>
+        </mat-select>
+
+      </div>
+      <div style="display:inline-block; width:80px; background-color:rgba(97,97,97,.05); text-align:center; border-radius:5px; margin:0px 0px 5px 5px; border-bottom:1px solid grey">
+        <mat-label style="font-size: 80%; color:grey;">Banheiros <mat-icon  style="font-size: 100%;">bathtub</mat-icon></mat-label>
+        <mat-select  type= matInput [formControl]="bathRooms" >
+          <mat-option value=1>1</mat-option>
+          <mat-option value=2>2</mat-option>
+          <mat-option value=3>3</mat-option>
+          <mat-option value=4>4</mat-option>
+          <mat-option value=5>5</mat-option>
+        </mat-select>
+      </div>
+      <div style="display:inline-block; width:80px; background-color:rgba(97,97,97,.05); text-align:center; border-radius:5px; margin:0px 0px 5px 5px; border-bottom:1px solid grey">
+        <mat-label style="font-size: 80%; color:grey;">Vagas <mat-icon style="font-size: 100%;">directions_car</mat-icon></mat-label>
+        <mat-select  type= matInput [formControl]="vacancies" >
+          <mat-option value=1>1</mat-option>
+          <mat-option value=2>2</mat-option>
+          <mat-option value=3>3</mat-option>
+          <mat-option value=4>4</mat-option>
+          <mat-option value=5>5</mat-option>
+        </mat-select>
+      </div> <br />
+      </fieldset>
+    </mat-grid-tile>
+
+    <mat-grid-tile rowspan="4" colspan="12" style="border-radius:3px 0px 0px 5px;">
+      <fieldset style="width:100%; padding:5px 10px">
+        <legend style="color:brown">LOCALIZAÇÃO DA PROPRIEDADE</legend>
+
+        <div class="example-container">
+          <mat-form-field appearance="fill">
+            <mat-label>CEP</mat-label>
+            <input matInput type="text">
+            <button mat-icon-button matSuffix (click)="getAddress(35024210)">
+              <mat-icon>search</mat-icon>
+            </button>
+            <mat-hint>Use apenas números</mat-hint>
+          </mat-form-field> <br />
+          <p>
+            <mat-form-field appearance="legacy" style="width:270px">
+              <input matInput placeholder="Logradouro">
+              <mat-hint>rua / avenida / estrada</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="legacy" style="width:50px">
+              <input matInput placeholder="N°" required>
+            </mat-form-field>
+            <mat-form-field appearance="legacy" style="width:200px">
+              <input matInput placeholder="Bairro">
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+              <input matInput placeholder="Cidade">
+            </mat-form-field>
+            <mat-form-field appearance="legacy" style="width:100px">
+              <mat-label>Estado</mat-label>
+              <mat-select  type= matInput [formControl]="vacancies" (valueChange)="addressForm.uf">
+                <mat-option value="AC">Acre</mat-option>
+                <mat-option value="AL">Alagoas</mat-option>
+                <mat-option value="AP">Amapá</mat-option>
+                <mat-option value="AM">Amazonas</mat-option>
+                <mat-option value="BA">Bahia</mat-option>
+                <mat-option value="CE">Ceará</mat-option>
+                <mat-option value="DF">Distrito Federal</mat-option>
+                <mat-option value="ES">Espírito Santo</mat-option>
+                <mat-option value="GO">Goiás</mat-option>
+                <mat-option value="MA">Maranhão</mat-option>
+                <mat-option value="MT">Mato Grosso</mat-option>
+                <mat-option value="MS">Mato Grosso do Sul</mat-option>
+                <mat-option value="MG">Minas Gerais</mat-option>
+                <mat-option value="PA">Pará</mat-option>
+                <mat-option value="PB">Paraíba</mat-option>
+                <mat-option value="PR">Paraná</mat-option>
+                <mat-option value="PE">Pernambuco</mat-option>
+                <mat-option value="PI">Piauí</mat-option>
+                <mat-option value="RJ">Rio de Janeiro</mat-option>
+                <mat-option value="RN">Rio Grande do Norte</mat-option>
+                <mat-option value="RS">Rio Grande do Sul</mat-option>
+                <mat-option value="RO">Rondônia</mat-option>
+                <mat-option value="RR">Roraima</mat-option>
+                <mat-option value="SC">Santa Catarina</mat-option>
+                <mat-option value="SP">São Paulo</mat-option>
+                <mat-option value="SE">Sergipe</mat-option>
+                <mat-option value="TO">Tocantins</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+        </div>
+      </fieldset>
+      </mat-grid-tile>
+
+    <mat-grid-tile rowspan="5" colspan="12">
+      <fieldset style="width:100%; padding:5px 10px">
+        <legend style="color: brown">LINKS DAS IMAGENS DA PROPRIEDADE</legend>
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Coloque aqui o link para <strong>PRIMEIRA</strong> imagem da propriedade</mat-label>
+          <input type="url" matInput placeholder="https://sua-url">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Coloque aqui o link para <strong>SEGUNDA</strong> imagem da propriedade</mat-label>
+          <input type="url" matInput placeholder="https://sua-url">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Coloque aqui o link para <strong>TERCEIRA</strong> imagem da propriedade</mat-label>
+          <input type="url" matInput placeholder="https://sua-url">
+        </mat-form-field>
+
+      </fieldset>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="2" colspan="12">
+    <fieldset fxLayout="row" fxLayoutAlign="center center" class="form-button-container" style="width: 100%;">
+      <button type="submit" mat-raised-button color="primary" style="width:180px; margin-right:5px; background-color:brown;">Adicionar propriedade</button>
+      <button type="submit" mat-stroked-button color="primary" routerLink="/" style="width:180px; color:brown">
+        Voltar
+      </button>
+    </fieldset>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+  </form>
+</div>
